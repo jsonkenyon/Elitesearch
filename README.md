@@ -16,7 +16,9 @@
 
 4. Extract and copy the templates/elitesearch to /usr/local/searxng/templates/elitesearch
 
-5. **_Optional_** - Review and copy the searxng/settings.yaml to /usr/local/searxng/searxng/settings.yaml (This is mandatory if you are restoring elitesearch.online, or building another instance.)
+5. ***Optional*** - Copy and replace the Caddyfile, to include the X-Real-IP header.  Mandatory for elitesearch.online rebuilds, or elitesearch.online backups
+
+6. **_Optional_** - Review and copy the searxng/settings.yaml to /usr/local/searxng/searxng/settings.yaml (This is mandatory elitesearch.online rebuilds, or elitesearch.online backups.)
    
    1. **_If you have copied this, you will want to replace the secret_key with something else.  You can do this by running the following_**
    
@@ -24,7 +26,7 @@
       sed -i "s|ultrasecretkey|$(openssl rand -hex 32)|g" searxng/settings.yml
       ```
 
-6. Open docker-compose.yaml and under the Volumes section add the following:
+7. Open docker-compose.yaml and under the Volumes section add the following:
    
    ```yaml
      - ./static/themes/elitesearch:/usr/local/searxng/searx/static/themes/elitesearch
