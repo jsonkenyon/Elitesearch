@@ -1,0 +1,34 @@
+{% from 'elitesearch/icons.html' import icon_tailwind %}
+{%- set category_icons = {
+'general': 'search-outline',
+'images': 'image-outline',
+'videos': 'play-outline',
+'news': 'newspaper-outline',
+'map': 'location-outline',
+'music': 'musical-notes-outline',
+'it': 'layers-outline',
+'science': 'school-outline',
+'files': 'file-tray-full-outline',
+'social media': 'people-outline',
+} -%}
+{{- '' -}}
+<div class="flex items-center mt-2">
+    <ul class="flex flex-wrap items-center w-full">
+        {%- for category in categories -%}
+        <li class="flex items-center">
+            <input class="hidden peer" type="checkbox" id="checkbox_{{ category|replace(' ', '_') }}"
+                name="category_{{ category }}" {% if category in selected_categories %} checked="checked" {% endif %} />
+            <label for="checkbox_{{ category|replace(' ', '_') }}"
+                class="justify-between w-full p-5 mb-1 uppercase cursor-pointer text-cyan-700 dark:hover:text-cyan-300 peer-checked:text-cyan-200 hover:text-cyan-600">
+                <div>
+                    {{- icon_tailwind(category_icons[category]) if category in category_icons else
+                    icon_tailwind('globe-outline')
+                    -}}
+                    <div class="text-sm font-semibold">{{- _(category) -}}</div>
+                </div>
+            </label>
+        </li>
+        {%- endfor -%}
+    </ul>
+</div>
+{{- '' -}}

@@ -1,0 +1,6 @@
+{% set body_class = "page_with_header" %}
+{% extends "elitesearch/base.html" %}
+{% block header %}
+<a href="{{ url_for('index') }}"><img style="width: auto; height: 6em;"
+        src="{{ url_for('static', filename='img/elitesearch.png') }}" alt="Elite Search"></a>
+{% endblock %}

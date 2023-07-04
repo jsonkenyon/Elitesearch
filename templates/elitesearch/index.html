@@ -1,0 +1,23 @@
+{% extends "elitesearch/base.html" %}
+{% block content %}
+<div class="mx-2">
+    <img class="block max-h-32 mb-12 mx-auto" src="{{ url_for('static', filename='img/elitesearch.png') }}" />
+
+    <div class="relative mx-auto mt-4 w-full lg:mt-0 lg:block mx-2">
+        {% include 'elitesearch/search.html' %}
+    </div>
+    <div class="mt-12 w-full text-gray-300 flex flex-col items-center">
+        <h1 class="text-3xl font-bold font-sans tracking-wide">The No Bullsh*t, Privacy Focused
+            Metasearch Engine.
+        </h1>
+        <p class="mt-2 text-md">
+            Privacy is at our core, powered by opensource <a class="text-cyan-500 font-bold" href="#">SearXNG</a>
+            Metasearch Engine.
+        </p>
+    </div>
+</div>
+
+{% include 'elitesearch/cta.html' %}
+
+{% include 'elitesearch/faq.html' %}
+{% endblock %}

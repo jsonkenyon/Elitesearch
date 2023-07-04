@@ -1,0 +1,61 @@
+# see https://docs.searxng.org/admin/engines/settings.html#use-default-settings
+use_default_settings: true
+general:
+  debug: false
+  instance_name: "Elite Search"
+  privacypolicy_url: false
+  donation_url: false
+  contact_url: "https://jasonkenyon.me"
+  enable_metrics: false
+server:
+  # base_url is defined in the SEARXNG_BASE_URL environment variable, see .env and docker-compose.yml
+  secret_key: "ultrasecretkey"  # change this!
+  limiter: true  # can be disabled for a private instance
+  image_proxy: true
+  http_protocol_version: "1.1"
+outgoing:
+  enable_http2: false
+  useragent_suffix: "EliteSearch - searxng@elitesearch.online"
+ui:
+  static_use_hash: true
+  default_theme: elitesearch
+redis:
+  url: redis://redis:6379/0
+engines:
+  - name: qwant
+    qwant_categ: web
+    engine: qwant
+    shortcut: qw
+    categories: [general, web]
+    disabled: true
+
+  - name: qwant news
+    qwant_categ: news
+    engine: qwant
+    shortcut: qwn
+    categories: news
+    disabled: true
+    network: qwant
+
+  - name: qwant images
+    qwant_categ: images
+    engine: qwant
+    shortcut: qwi
+    categories: [images, web]
+    disabled: true
+    network: qwant
+
+  - name: qwant videos
+    qwant_categ: videos
+    engine: qwant
+    shortcut: qwv
+    categories: [videos, web]
+    disabled: true
+    network: qwant
+
+# DDG Seems to be giving some errors, due to this we are disabling for the time being.
+  - name: duckduckgo
+    engine: duckduckgo
+    shortcut: ddg
+    disabled: false
+#    disabled: true
